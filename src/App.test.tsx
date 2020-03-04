@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent, cleanup, Queries } from "@testing-library/react";
+import { render, fireEvent, cleanup } from "@testing-library/react";
 import App from "./App";
 import { createModel } from "@xstate/test";
 import { trafficLightMachine } from "./machines/trafficLightMachine";
@@ -17,6 +17,7 @@ describe("traffic light state tests", () => {
         fireEvent.click(getByText("I want to cross the road!"));
       },
     },
+    // I don't like how this looks, but testCoverage complains
     'xstate.after(2000)#trafficLight.yellow': ({ getByText }) => {
       expect(getByText("I'm yellow")).toBeDefined()
     }
